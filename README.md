@@ -84,6 +84,40 @@ SVG schematic for its category rather than fabricated product imagery. If real
 screenshots become available, add them under `public/` and reference them from
 `src/data/projects.ts`.
 
+## Verification performed
+
+- `npm run lint`, `npm run typecheck` and `npm run build` all pass.
+- The production build was served locally and driven with headless Chrome at
+  375px, 768px and 1440px: no horizontal overflow, correct responsive
+  navigation, working in-page anchors, working mobile menu (open, close, Escape,
+  scroll lock), working copy-to-clipboard feedback, and no console errors.
+- `prefers-reduced-motion: reduce` renders all content without animation, and
+  with JavaScript disabled the markup stays visible via a `<noscript>` rule.
+- The CV download was tested in both states: with a file present the button
+  links to the real asset, and without it the email fallback is shown.
+- A WCAG AA contrast audit resolved the effective background behind every text
+  element (365 elements across the home page and a case study) and found no
+  failures. The muted grey token was darkened from `#6b7480` (4.41:1) to
+  `#5c6472` (5.56:1) and low-opacity white labels on navy were raised to reach
+  the 4.5:1 threshold.
+- Human visual review of the rendered pages was not performed; layout was
+  verified programmatically (geometry, overflow, visibility and interaction
+  assertions) rather than judged by eye.
+
+## Known limitations
+
+- **404 status on unknown project slugs.** With Cache Components enabled,
+  `/projects/<unknown>` streams the not-found page into a prerendered shell, so
+  the response status is 200 even though the not-found UI is rendered. Removing
+  this would require rendering the whole route per request, giving up static
+  prerendering of the case studies.
+- **No Open Graph image and no canonical URL.** Both need a real deployment
+  domain; `metadata.metadataBase` should be set once one exists.
+- **Internship dates.** The CV does not state them, so the experience timeline
+  shows the internship type instead of invented dates.
+- **No repository or demo links.** No project URL is documented in the CV, so
+  none is shown rather than guessing.
+
 ## Factual scope
 
 All content is derived from the CV: no invented dates, metrics, clients,

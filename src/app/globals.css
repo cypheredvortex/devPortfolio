@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-paper: #f7f7f4;
+  --color-surface: #ffffff;
+  --color-ink: #12161b;
+  --color-ink-soft: #39414b;
+  --color-muted: #5c6472;
+  --color-navy: #17395a;
+  --color-navy-deep: #0e2740;
+  --color-navy-tint: #e9eef4;
+  --color-line: #e3e3dd;
+  --color-line-strong: #c9cbc3;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular,
+    "Cascadia Mono", monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: var(--color-navy);
+    color: #ffffff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-navy);
+    outline-offset: 3px;
+  }
+}
+
+/*
+ * Technical label treatment used for metadata, counters and stack names.
+ * Sizes are fixed variants so they never clash with text-* overrides.
+ */
+@utility label-mono {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+@utility label-mono-xs {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+@utility label-mono-sm {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+@utility label-mono-lg {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

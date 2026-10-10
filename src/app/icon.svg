@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Achraf Sghiri">
+  <rect width="64" height="64" fill="#17395a"/>
+  <path d="M18 44 L26 20 L34 44" stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="square"/>
+  <path d="M22 36 H30" stroke="#ffffff" stroke-width="3"/>
+  <path d="M42 24 C36 24 36 43 46 42" stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="square"/>
+</svg>
